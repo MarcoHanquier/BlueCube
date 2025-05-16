@@ -28,67 +28,67 @@ bool base3Ouest;
 
 // Nord Sud Est Ouest
 void initialiseRooms(){
-room1 = {1,"Hall d'Entree","Basique", true, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, false};
-room2 = {2,"Placard","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room3 = {3,"Grand Placard","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room4 = {4,"Grenier","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room5 = {5,"Billard","Basique", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room6 = {6,"Parloir","Basique", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room7 = {7,"Entrepot","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room8 = {8,"Recoin","Basique", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room9 = {9,"Garage","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room10 = {10,"Chambre froide","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room11 = {11,"Salle a manger","Basique", true, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room12 = {12,"Bureau","Basique", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room13 = {13,"Coffres","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room14 = {14,"Salle de bal","Basique", true, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room15 = {15,"Salle musicale","Basique", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room16 = {16,"Garde-manger","Basique", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room17 = {17,"Sauna","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room18 = {18,"Galerie","Basique", true, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room19 = {19,"Piscine","Basique", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room20 = {20,"Salon","Basique", true, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room21 = {21,"Vestiaire","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room22 = {22,"Laboratoire","Basique", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room23 = {23,"Securite","Basique", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room24 = {24,"Fondation","Basique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room25 = {25,"Croisement","Couloir", true, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room26 = {26,"Aile Droite","Couloir", true, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room27 = {27,"Aile Gauche","Couloir", true, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room28 = {28,"Corridor","Couloir", true, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room29 = {29,"Hall","Couloir", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room30 = {30,"Foyer","Couloir", true, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room31 = {31,"Aquarium","Basique", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room32 = {32,"Serre","Jardin", true, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room33 = {33,"Terrasse","Jardin", true, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room34 = {34,"Patio","Jardin", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room35 = {35,"Cour","Jardin", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room36 = {36,"Cloitre","Jardin", true, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room37 = {37,"Veranda","Jardin", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room38 = {38,"Jardin Secret","Jardin", true, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room39 = {39,"Suite","Chambre", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room40 = {40,"Chambre double","Chambre", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room41 = {41,"Chambre","Chambre", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room42 = {42,"Boudoir","Chambre", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room43 = {43,"Chambre d'amis","Chambre", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room44 = {44,"Nurserie","Chambre", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room45 = {45,"Sous l'escalier","Chambre", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room46 = {46,"Laverie","Boutique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room47 = {47,"Souvenir","Boutique", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room48 = {48,"Cuisine","Boutique", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room49 = {49,"Armurerie","Boutique", false, true, true, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room50 = {50,"Cordonnier","Boutique", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room51 = {51,"Bijouterie","Boutique", true, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room52 = {52,"Librairie","Boutique", false, true, false, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room53 = {53,"Salle de muscu","Rouge", true, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room54 = {54,"Chaudiere","Rouge", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room55 = {55,"Chapelle","Rouge", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room56 = {56,"Chambre Noire","Rouge", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room57 = {57,"Gymnase","Rouge", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room58 = {58,"Archives","Rouge", false, true, true, true, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room59 = {59,"Salle de bain","Rouge", false, true, false, false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
-room60 = {60,"Antichambre","Basique", true, true, true, true, true, false, false, false, nullptr, nullptr, nullptr, nullptr, false};
-room61 = {61,"Piece ???","Basique", false, true, false, false, false, true, false, false, nullptr, nullptr, nullptr, nullptr, false};
+room1 = {1,"Hall d'Entree","Basique", true, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, false};
+room2 = {2,"Placard","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room3 = {3,"Grand Placard","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room4 = {4,"Grenier","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room5 = {5,"Billard","Basique", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room6 = {6,"Parloir","Basique", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room7 = {7,"Entrepot","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room8 = {8,"Recoin","Basique", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room9 = {9,"Garage","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room10 = {10,"Chambre froide","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room11 = {11,"Salle a manger","Basique", true, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room12 = {12,"Bureau","Basique", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room13 = {13,"Coffres","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room14 = {14,"Salle de bal","Basique", true, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room15 = {15,"Salle musicale","Basique", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room16 = {16,"Garde-manger","Basique", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room17 = {17,"Sauna","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room18 = {18,"Galerie","Basique", true, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room19 = {19,"Piscine","Basique", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room20 = {20,"Salon","Basique", true, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room21 = {21,"Vestiaire","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room22 = {22,"Laboratoire","Basique", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room23 = {23,"Securite","Basique", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room24 = {24,"Fondation","Basique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room25 = {25,"Croisement","Couloir", true, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room26 = {26,"Aile Droite","Couloir", true, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room27 = {27,"Aile Gauche","Couloir", true, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room28 = {28,"Corridor","Couloir", true, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room29 = {29,"Hall","Couloir", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room30 = {30,"Foyer","Couloir", true, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room31 = {31,"Aquarium","Basique", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room32 = {32,"Serre","Jardin", true, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room33 = {33,"Terrasse","Jardin", true, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room34 = {34,"Patio","Jardin", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room35 = {35,"Cour","Jardin", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room36 = {36,"Cloitre","Jardin", true, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room37 = {37,"Veranda","Jardin", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room38 = {38,"Jardin Secret","Jardin", true, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room39 = {39,"Suite","Chambre", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room40 = {40,"Chambre double","Chambre", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room41 = {41,"Chambre","Chambre", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room42 = {42,"Boudoir","Chambre", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room43 = {43,"Chambre d'amis","Chambre", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room44 = {44,"Nurserie","Chambre", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room45 = {45,"Sous l'escalier","Chambre", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room46 = {46,"Laverie","Boutique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room47 = {47,"Souvenir","Boutique", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room48 = {48,"Cuisine","Boutique", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room49 = {49,"Armurerie","Boutique", false, true, true, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room50 = {50,"Cordonnier","Boutique", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room51 = {51,"Bijouterie","Boutique", true, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room52 = {52,"Librairie","Boutique", false, true, false, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room53 = {53,"Salle de muscu","Rouge", true, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room54 = {54,"Chaudiere","Rouge", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room55 = {55,"Chapelle","Rouge", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room56 = {56,"Chambre Noire","Rouge", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room57 = {57,"Gymnase","Rouge", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room58 = {58,"Archives","Rouge", false, true, true, true, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room59 = {59,"Salle de bain","Rouge", false, true, false, false, false, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, true};
+room60 = {60,"Antichambre","Basique", true, true, true, true, true, false, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, false};
+room61 = {61,"Piece ???","Basique", false, true, false, false, false, true, false,  false, false, false, false, false, nullptr, nullptr, nullptr, nullptr, false};
 }
 
 void changeDisplayColorOfRoomType(){
@@ -398,26 +398,34 @@ void generateNewRoom(){
 void createNewRoom() {
     // Place la pièce en jeu et fait la liaison entre la pièce actuelle et la nouvelle
     newRoomChoice->isRoomInThePool = false;
-
+    
     if(direction == "Nord") {
+        roomY--;
+        newRoomChoice->doorNordIsLocked = rollNewRoomLockedDoors();
+        roomY++;
         currentRoom->roomNord = newRoomChoice;
         currentRoom->roomNord->roomSud = currentRoom;
         currentRoom->roomNord->doorSudIsOpen = true;
         houseMap[roomY-1][roomX] = currentRoom->roomNord->roomNumber;
     }
     if(direction == "Ouest") {
+        newRoomChoice->doorOuestIsLocked = rollNewRoomLockedDoors();
         currentRoom->roomOuest = newRoomChoice;
         currentRoom->roomOuest->roomEst = currentRoom;
         currentRoom->roomOuest->doorEstIsOpen = true;
         houseMap[roomY][roomX-1] = currentRoom->roomOuest->roomNumber;
     }
     if(direction == "Est") {
+        newRoomChoice->doorEstIsLocked = rollNewRoomLockedDoors();
         currentRoom->roomEst = newRoomChoice;
         currentRoom->roomEst->roomOuest = currentRoom;
         currentRoom->roomEst->doorOuestIsOpen = true;
         houseMap[roomY][roomX+1] = currentRoom->roomEst->roomNumber;
     }
     if(direction == "Sud") {
+        roomY++;
+        newRoomChoice->doorSudIsLocked = rollNewRoomLockedDoors();
+        roomY--;
         currentRoom->roomSud = newRoomChoice;
         currentRoom->roomSud->roomNord = currentRoom;
         currentRoom->roomSud->doorNordIsOpen = true;
@@ -426,6 +434,52 @@ void createNewRoom() {
 
 }
 
+
+bool rollNewRoomLockedDoors() {
+
+    int lockedProbability = 0;
+
+    switch(roomY){
+        case 0:
+            lockedProbability = 70;
+            break;
+        case 1:
+            lockedProbability = 60;
+            break;
+        case 2:
+            lockedProbability = 50;
+            break;
+        case 3:
+            lockedProbability = 40;
+            break;
+        case 4:
+            lockedProbability = 30;
+            break;
+        case 5:
+            lockedProbability = 20;
+            break;
+        case 6:
+            lockedProbability = 10;
+            break;
+        default:    
+            lockedProbability = 0;
+            break;
+
+    }
+  
+    int rollLockedDoor = random(100);
+
+    gb.display.setCursor(40, 20);
+    gb.display.print(rollLockedDoor);
+
+    gb.display.setCursor(40, 25);
+    gb.display.print(lockedProbability);
+  
+    if (rollLockedDoor < lockedProbability) {
+        return true;
+    } else return false;
+
+}
 
 void rollRandomRoomOne(){
     int randomRoomOne = random(numberOfRoomsInThePool);

@@ -16,12 +16,14 @@ extern const uint8_t font3x3[];
 Image menu(BLUEPRINT_MENU_DATA);
 Image paper(PAPER_ICON_DATA);
 Image paperSheet(PAPER_SPRITE_DATA);
+Image buttonAIcon(BUTTON_A_ICON_DATA);
 
 
 struct s_room{
   int roomNumber; String roomName; String roomType; 
   bool doorNordExist; bool doorSudExist; bool doorEstExist; bool doorOuestExist;
   bool doorNordIsOpen; bool doorSudIsOpen; bool doorEstIsOpen; bool doorOuestIsOpen;
+  bool doorNordIsLocked; bool doorSudIsLocked; bool doorEstIsLocked; bool doorOuestIsLocked;
   s_room* roomNord; s_room* roomSud; s_room* roomEst; s_room* roomOuest;
   bool isRoomInThePool;};
 
@@ -179,7 +181,7 @@ struct Avatar {
 
   int day = 1;
   int steps = 50;
-  int keys = 0;
+  int keys = 5;
   int gems = 0;
   int dice = 0;
   int gold = 0;
@@ -209,7 +211,7 @@ struct Avatar {
 void callItADay(){
   // Reset stats
   steps = 50;
-  keys = 0;
+  keys = 5;
   gems = 0;
   dice = 0;
   gold = 0;
@@ -296,7 +298,6 @@ void entrees() {
 
   } else if (gb.buttons.repeat(BUTTON_LEFT, 1) && joueurX > 0 + MUR_LARGEUR) { 
     avatar.moveToLeft();
-
   }
   
   // Mouvement Droite
@@ -306,7 +307,6 @@ void entrees() {
 
   } else if (gb.buttons.repeat(BUTTON_RIGHT, 1) && joueurX < gb.display.width() - (MUR_LARGEUR + AVATAR_WIDTH)) {
     avatar.moveToRight();
-
   }
   
 
@@ -317,7 +317,6 @@ void entrees() {
 
   } else if (gb.buttons.repeat(BUTTON_UP, 1) && joueurY > 0 + MUR_HAUTEUR) {
     avatar.moveToUp();
-
   }
   
   // Mouvement Bas
@@ -327,7 +326,6 @@ void entrees() {
 
   } else if (gb.buttons.repeat(BUTTON_DOWN, 1) && joueurY < gb.display.height() - (MUR_HAUTEUR + AVATAR_HEIGHT)) {
     avatar.moveToDown();
-
   }
 
   // Menu
@@ -376,6 +374,8 @@ void miseAJour() {
   }
   roomName = currentRoom->roomName;
 
+  checkIfStepsIsEmpty();
+
 }
 
 // affichage.ino //
@@ -400,6 +400,7 @@ void affichage() {
   }
 
   avatar.draw();
+  displayButtonAIcon();
 
 }
 
@@ -419,10 +420,8 @@ void displayMenu(){
       return;
     } 
   
-    if(gb.buttons.pressed(BUTTON_A)){
-      callItADay();
-    return;
-    }
+
+
     gb.display.setCursor(rightMenuX, 5);
     gb.display.print("Jour");
     
@@ -430,52 +429,76 @@ void displayMenu(){
     gb.display.print(day);
     
     gb.display.setCursor(rightMenuX, 12);
-    gb.display.print("Pas :");
+    gb.display.print("Pas:");
     
-    gb.display.setCursor(rightMenuX+20, 12);
+    gb.display.setCursor(rightMenuX+15, 12);
     gb.display.print(steps);
     
     gb.display.setCursor(rightMenuX, 19);
-    gb.display.print("Cles :");
+    gb.display.print("Cles:");
     
-    gb.display.setCursor(rightMenuX+32, 19);
+    gb.display.setCursor(rightMenuX+22, 19);
     gb.display.print(keys);
     
     gb.display.setCursor(rightMenuX, 26);
-    gb.display.print("Argent :");
+    gb.display.print("Argent:");
     
-    gb.display.setCursor(rightMenuX+32, 26);
+    gb.display.setCursor(rightMenuX+28, 26);
     gb.display.print(gold);
     
     gb.display.setCursor(rightMenuX, 34);
     gb.display.print("A:Dormir");
+
+    if(gb.buttons.pressed(BUTTON_A)){
+      callItADayConfirmation();
+    return;
+    }
   }
 }
 
 void doorOpening(){
+
   if (joueurY == gb.display.height() - (MUR_HAUTEUR + AVATAR_HEIGHT) && joueurX >= 30 && (joueurX < 51 - AVATAR_WIDTH) 
   && currentRoom->doorSudExist && !currentRoom->doorSudIsOpen) { // Porte bas
     direction = "Sud";
-    generateNewRoom();
-    currentRoom->doorSudIsOpen = true;
+
+    if(currentRoom->doorSudIsLocked){
+      openLockedDoor();
+    } else {
+      generateNewRoom();
+      currentRoom->doorSudIsOpen = true;
+    }
+
   } 
   if (joueurY == 0 + MUR_HAUTEUR && joueurX >= 30 && (joueurX < 51 - AVATAR_WIDTH) 
   && currentRoom->doorNordExist && !currentRoom->doorNordIsOpen) { // Porte haut
     direction = "Nord";
-    generateNewRoom();
-    currentRoom->doorNordIsOpen = true;
+    if(currentRoom->doorNordIsLocked){
+      openLockedDoor();
+    } else {
+      generateNewRoom();
+      currentRoom->doorNordIsOpen = true;
+    }
   }
   if (joueurX == gb.display.width() - (MUR_LARGEUR + AVATAR_WIDTH) && joueurY >= 22 && (joueurY < 43 - AVATAR_HEIGHT) 
   && currentRoom->doorEstExist && !currentRoom->doorEstIsOpen) { // Porte droite
     direction = "Est";
-    generateNewRoom();
-    currentRoom->doorEstIsOpen = true;
+    if(currentRoom->doorEstIsLocked){
+      openLockedDoor();
+    } else {
+      generateNewRoom();
+      currentRoom->doorEstIsOpen = true;
+    }
   }
   if (joueurX == 0 + MUR_LARGEUR && joueurY >= 22 && (joueurY < 43 - AVATAR_HEIGHT) 
     && currentRoom->doorOuestExist && !currentRoom->doorOuestIsOpen) { // Porte gauche
     direction = "Ouest";
-    generateNewRoom();
-    currentRoom->doorOuestIsOpen = true;
+    if(currentRoom->doorOuestIsLocked){
+      openLockedDoor();
+    } else {
+      generateNewRoom();
+      currentRoom->doorOuestIsOpen = true;
+    }
   }
 
 }
@@ -526,3 +549,200 @@ void readPaper() {
 }
 
   
+void displayButtonAIcon() { // Affichage contextuel devant une porte
+  if (joueurY == gb.display.height() - (MUR_HAUTEUR + AVATAR_HEIGHT) && joueurX >= 30 && (joueurX < 51 - AVATAR_WIDTH) 
+  && currentRoom->doorSudExist && !currentRoom->doorSudIsOpen) { // Porte bas
+    gb.display.drawImage(70, 54, buttonAIcon);
+  } 
+  if (joueurY == 0 + MUR_HAUTEUR && joueurX >= 30 && (joueurX < 51 - AVATAR_WIDTH) 
+  && currentRoom->doorNordExist && !currentRoom->doorNordIsOpen) { // Porte haut
+    gb.display.drawImage(70, 54, buttonAIcon);
+  }
+  if (joueurX == gb.display.width() - (MUR_LARGEUR + AVATAR_WIDTH) && joueurY >= 22 && (joueurY < 43 - AVATAR_HEIGHT) 
+  && currentRoom->doorEstExist && !currentRoom->doorEstIsOpen) { // Porte droite
+    gb.display.drawImage(70, 54, buttonAIcon);
+  }
+  if (joueurX == 0 + MUR_LARGEUR && joueurY >= 22 && (joueurY < 43 - AVATAR_HEIGHT) 
+    && currentRoom->doorOuestExist && !currentRoom->doorOuestIsOpen) { // Porte gauche
+      gb.display.drawImage(70, 54, buttonAIcon);
+  }
+}
+
+void checkIfStepsIsEmpty() {
+  if(steps == 0){
+    callItADay();
+  }
+}
+
+void callItADayConfirmation(){
+
+  int cursorPosition = 15;
+  int selection = 1;
+
+  while(1) {
+		while(!gb.update());
+
+    gb.display.setColor(BLACK);
+    gb.display.fillRect(13, 28, 55, 17);
+
+      if(gb.buttons.pressed(BUTTON_LEFT) && selection > 1){
+			selection--;
+			gb.sound.playTick();
+		}
+
+		if(gb.buttons.pressed(BUTTON_RIGHT) && selection < 2){
+			selection++;
+			gb.sound.playTick();
+		}
+
+    if(gb.buttons.pressed(BUTTON_A)){
+			switch(selection){
+				case 1:
+                    gb.sound.playOK();
+                    callItADay();
+                    return;
+					break;
+				case 2:
+                    gb.sound.playOK();
+          return;
+					break;
+
+			}
+		}
+
+    if(gb.buttons.pressed(BUTTON_B)){
+      return;
+      break;
+    }
+
+        switch (selection){
+			case 1:
+				cursorPosition = 15;
+				break;
+			case 2:
+        cursorPosition = 35;
+				break;
+		}
+
+    gb.display.setColor(WHITE);
+        gb.display.setCursor(cursorPosition, 38);
+        gb.display.print("-");
+
+        gb.display.setCursor(15, 30);
+        gb.display.print("Aller dormir?");
+      
+        gb.display.setCursor(20, 38);
+        gb.display.print("Oui");
+        
+        gb.display.setCursor(40, 38);
+        gb.display.print("Non");
+	}
+
+
+}
+
+
+void openLockedDoor(){
+
+  while(1) {
+    while(!gb.update());
+    gb.display.setColor(BLACK);
+    gb.display.fillRect(13, 28, 55, 17);
+    gb.display.setColor(WHITE);
+    gb.display.setCursor(15, 30);
+    gb.display.print("La porte est");
+    gb.display.setCursor(15, 36);
+    gb.display.print("verrouillee!");
+
+    if(gb.buttons.pressed(BUTTON_A)){
+      break;
+    }
+  }
+
+  if(keys != 0){
+    useKeyConfirmation(); 
+  } else {
+    return;
+  }
+
+}
+
+
+void useKeyConfirmation(){
+
+  int cursorPosition = 7;
+  int selection = 1;
+
+  while(1) {
+		while(!gb.update());
+
+    gb.display.setColor(BLACK);
+    gb.display.fillRect(5, 28, 70, 17);
+
+    if(gb.buttons.pressed(BUTTON_LEFT) && selection > 1){
+			selection--;
+			gb.sound.playTick();
+		}
+
+		if(gb.buttons.pressed(BUTTON_RIGHT) && selection < 2){
+			selection++;
+			gb.sound.playTick();
+		}
+
+    if(gb.buttons.pressed(BUTTON_A)){
+			switch(selection){
+				case 1:
+          gb.sound.playOK();
+          keys--;
+          if(direction == "Nord") {
+            currentRoom->doorNordIsLocked == false;
+          }
+          if(direction == "Ouest") {
+            currentRoom->doorOuestIsLocked == false;
+          }
+          if(direction == "Est") {
+            currentRoom->doorEstIsLocked == false;
+          }
+          if(direction == "Sud") {
+            currentRoom->doorSudIsLocked == false;
+          }
+          generateNewRoom();
+          return;
+					break;
+				case 2:
+          gb.sound.playOK();
+          return;
+					break;
+			}
+		}
+
+    if(gb.buttons.pressed(BUTTON_B)){
+      return;
+      break;
+    }
+
+    switch (selection){
+			case 1:
+				cursorPosition = 7;
+				break;
+			case 2:
+        cursorPosition = 27;
+				break;
+		}
+
+    gb.display.setColor(WHITE);
+    gb.display.setCursor(7, 30);
+    gb.display.print("Utiliser une cle?");
+
+    gb.display.setCursor(cursorPosition, 38);
+    gb.display.print("-");
+  
+    gb.display.setCursor(12, 38);
+    gb.display.print("Oui");
+    
+    gb.display.setCursor(32, 38);
+    gb.display.print("Non");
+	}
+
+
+}
